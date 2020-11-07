@@ -1,0 +1,33 @@
+type Product {
+    id: ID!
+    name: String!
+    price: Float!
+    images: [Images],
+    category: Category
+    createdAt: String!
+    updatedAt: String
+}
+
+type Images {
+    path: String
+}
+
+type File {
+    url: String!
+}
+
+input createProduct {
+    name: String!
+    price: Float!
+    category_id: String!
+}
+
+
+type Query {
+    getProduct: [Product]!
+}
+
+type Mutation {
+    addProduct(product: createProduct!, files: [Upload]): Product!
+    addImage(id: String!, file: Upload!): File!
+}
